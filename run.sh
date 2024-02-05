@@ -9,3 +9,12 @@ aws iam create-role \
 
 # zip file
 zip function.zip src/index.js
+
+
+aws lambda create-function \
+    --function-name hello-cli \
+    --zip-file fileb://function.zip \
+    --handler index.handler \
+    --runtime nodejs20.x \
+    --role arn:aws:iam::271526550953:role/lambda-ex \
+    | tee logs/lambda-create.log 
